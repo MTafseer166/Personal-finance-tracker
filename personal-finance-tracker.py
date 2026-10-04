@@ -92,3 +92,15 @@ def add_expense(transactions):
     })
     save_transactions(transactions)
     print("Expense added successfully!")
+
+def view_transactions(transactions):
+    print("\n--- All Transactions ---")
+    if len(transactions) == 0:
+        print("No transactions recorded yet.")
+        return
+
+    print(f"{'No.':<5}{'Type':<10}{'Category':<15}{'Amount':>10}   Description")
+    print("-" * 65)
+    for i in range(len(transactions)):
+        t = transactions[i]
+        print(f"{i + 1:<5}{t['type']:<10}{t['category']:<15}{t['amount']:>10.2f}   {t['description']}")
