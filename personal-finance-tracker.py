@@ -115,3 +115,23 @@ def search_by_category(transactions):
             found = True
     if not found:
         print(f"No transactions found in category '{category}'.")
+
+def show_summary(transactions):
+    print("\n--- Summary ---")
+    if len(transactions) == 0:
+        print("No transactions recorded yet.")
+        return
+
+    total_income = 0
+    total_expense = 0
+    for t in transactions:
+        if t["type"] == "Income":
+            total_income = total_income + t["amount"]
+        else:
+            total_expense = total_expense + t["amount"]
+
+    balance = total_income - total_expense
+
+    print("Total Income:", round(total_income, 2))
+    print("Total Expenses:", round(total_expense, 2))
+    print("Remaining Balance:", round(balance, 2))
