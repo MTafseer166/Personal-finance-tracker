@@ -72,3 +72,23 @@ def add_income(transactions):
     })
     save_transactions(transactions)
     print("Income added successfully!")
+
+def add_expense(transactions):
+    print("\n--- Add Expense ---")
+    category = input("Enter category (e.g. Food, Rent, Transport): ").strip()
+    if category == "":
+        print("Category cannot be empty.")
+        return
+    amount = get_amount()
+    if amount is None:
+        return
+    description = input("Enter description (optional): ").strip()
+
+    transactions.append({
+        "type": "Expense",
+        "category": category,
+        "amount": amount,
+        "description": description,
+    })
+    save_transactions(transactions)
+    print("Expense added successfully!")
