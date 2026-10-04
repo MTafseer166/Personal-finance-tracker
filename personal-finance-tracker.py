@@ -52,3 +52,23 @@ def get_amount():
     except ValueError:
         print("Invalid amount.")
         return None
+
+def add_income(transactions):
+    print("\n--- Add Income ---")
+    category = input("Enter source (e.g. Salary, Freelance): ").strip()
+    if category == "":
+        print("Source cannot be empty.")
+        return
+    amount = get_amount()
+    if amount is None:
+        return
+    description = input("Enter description (optional): ").strip()
+
+    transactions.append({
+        "type": "Income",
+        "category": category,
+        "amount": amount,
+        "description": description,
+    })
+    save_transactions(transactions)
+    print("Income added successfully!")
