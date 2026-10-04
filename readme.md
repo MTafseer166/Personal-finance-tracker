@@ -1,8 +1,7 @@
 # Personal Finance Tracker
 
 A console-based personal finance tracker written in Python.
-
-**Final Project — Option 2: Personal Finance / Expense Management System**
+Personal Finance / Expense Management System**
 
 ## What It Does
 
