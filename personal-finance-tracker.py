@@ -170,3 +170,41 @@ def delete_transaction(transactions):
     else:
         print("No transaction with that number.")
 
+def main():
+    transactions = load_transactions()
+
+    while True:
+        print("\n===== Personal Finance Tracker =====")
+        print("1. Add Income")
+        print("2. Add Expense")
+        print("3. View All Transactions")
+        print("4. Search by Category")
+        print("5. Show Summary (Income, Expenses, Balance)")
+        print("6. Analyze Expenses by Category")
+        print("7. Delete Transaction")
+        print("8. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            add_income(transactions)
+        elif choice == "2":
+            add_expense(transactions)
+        elif choice == "3":
+            view_transactions(transactions)
+        elif choice == "4":
+            search_by_category(transactions)
+        elif choice == "5":
+            show_summary(transactions)
+        elif choice == "6":
+            analyze_expenses(transactions)
+        elif choice == "7":
+            delete_transaction(transactions)
+        elif choice == "8":
+            print("Goodbye! Your data has been saved.")
+            break
+        else:
+            print("Invalid choice. Please enter a number from 1 to 8.")
+
+
+if __name__ == "__main__":
+    main()
