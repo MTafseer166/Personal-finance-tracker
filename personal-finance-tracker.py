@@ -104,3 +104,14 @@ def view_transactions(transactions):
     for i in range(len(transactions)):
         t = transactions[i]
         print(f"{i + 1:<5}{t['type']:<10}{t['category']:<15}{t['amount']:>10.2f}   {t['description']}")
+
+def search_by_category(transactions):
+    print("\n--- Search by Category ---")
+    category = input("Enter category to search: ").strip().lower()
+    found = False
+    for t in transactions:
+        if t["category"].lower() == category:
+            print(f"{t['type']} - {t['category']} - {t['amount']:.2f} - {t['description']}")
+            found = True
+    if not found:
+        print(f"No transactions found in category '{category}'.")
