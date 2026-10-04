@@ -149,3 +149,24 @@ def analyze_expenses(transactions):
     totals = totals.sort_values(ascending=False)
     print(totals.to_string())
     print("\nHighest spending category:", totals.idxmax())
+
+def delete_transaction(transactions):
+    print("\n--- Delete Transaction ---")
+    if len(transactions) == 0:
+        print("No transactions to delete.")
+        return
+
+    view_transactions(transactions)
+    try:
+        number = int(input("Enter the number of the transaction to delete: "))
+    except ValueError:
+        print("Invalid number.")
+        return
+
+    if 1 <= number <= len(transactions):
+        removed = transactions.pop(number - 1)
+        save_transactions(transactions)
+        print(f"Deleted: {removed['type']} - {removed['category']} - {removed['amount']:.2f}")
+    else:
+        print("No transaction with that number.")
+
