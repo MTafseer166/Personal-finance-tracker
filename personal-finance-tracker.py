@@ -135,3 +135,17 @@ def show_summary(transactions):
     print("Total Income:", round(total_income, 2))
     print("Total Expenses:", round(total_expense, 2))
     print("Remaining Balance:", round(balance, 2))
+
+def analyze_expenses(transactions):
+    print("\n--- Expense Analysis (by Category) ---")
+    expenses = [t for t in transactions if t["type"] == "Expense"]
+
+    if len(expenses) == 0:
+        print("No expenses recorded yet.")
+        return
+
+    df = pd.DataFrame(expenses)
+    totals = df.groupby("category")["amount"].sum().round(2)
+    totals = totals.sort_values(ascending=False)
+    print(totals.to_string())
+    print("\nHighest spending category:", totals.idxmax())
